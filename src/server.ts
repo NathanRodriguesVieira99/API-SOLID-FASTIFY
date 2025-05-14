@@ -14,7 +14,7 @@ import { env } from '@/env/index';
 import { Routes } from './routes/routes';
 
 // criação do servidor HTTP
-const server = fastify({}).withTypeProvider<ZodTypeProvider>();
+export const server = fastify({}).withTypeProvider<ZodTypeProvider>();
 
 // setup Zod e Swagger
 server.setValidatorCompiler(validatorCompiler);
