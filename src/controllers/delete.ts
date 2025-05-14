@@ -1,5 +1,7 @@
 import type { FastifyReply, FastifyRequest } from 'fastify';
 
+import { paramsSchema } from '@/validators/paramsSchema';
+
 import { UsersRepository } from '@/repositories/UsersRepository';
 
 import { DeleteUseCase } from '@/services/delete';
@@ -8,14 +10,14 @@ export async function deleteUserById(
     request: FastifyRequest,
     reply: FastifyReply
 ) {
-    const { id } = request.params as { id: string };
-
     try {
         // chama o repository
         const usersRepository = new UsersRepository();
         // injeta o repository no DeleteUseCase
         const deleteUseCase = new DeleteUseCase(usersRepository);
 
+        // busca o ID para passar de parâmetro ao execute
+        const { id } = paramsSchema.parse(request.params);
         await deleteUseCase.execute(id);
     } catch (error) {
         // TODO criar uma validação melhor
