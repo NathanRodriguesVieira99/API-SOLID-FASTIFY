@@ -35,4 +35,17 @@ export class UsersRepository implements IUsersRepository {
 
         return result ? true : false;
     }
+    // lógica de listar os usuários
+    async listAll(): Promise<User[]> {
+        return prisma.user.findMany({
+            select: {
+                id: true,
+                name: true,
+                email: true,
+                password_hash: true,
+                created_at: true,
+                updated_at: true,
+            },
+        });
+    }
 }
