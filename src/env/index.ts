@@ -1,8 +1,8 @@
 /* 
 VALIDAÇÃO DAS VARIÁVEIS DE AMBIENTE COM ZOD E DOTENV
 */
-import 'dotenv/config';
 import { z } from 'zod';
+import 'dotenv/config';
 
 const envSchema = z.object({
     NODE_ENV: z.enum(['dev', 'test', 'production']).default('dev'),

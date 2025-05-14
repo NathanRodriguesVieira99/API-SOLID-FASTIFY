@@ -1,12 +1,14 @@
 /*
 CONTROLLER EXTRAI OS DADOS DO BODY DA REQUISIÇÃO, CHAMA OS REPOSITORIES E SERVICES E OS PROCESSA PARA HTTP
 */
-
 import { UsersRepository } from '@/repositories/UsersRepository';
-import { UserAlreadyExistsError } from '@/services/errors/user-already-exists-error';
-import { RegisterUseCase } from '@/services/register';
-import { registerBodySchema } from '@/validators/registerBodySchema';
 import type { FastifyReply, FastifyRequest } from 'fastify';
+
+import { registerBodySchema } from '@/validators/registerBodySchema';
+
+import { UserAlreadyExistsError } from '@/services/errors/user-already-exists-error';
+
+import { RegisterUseCase } from '@/services/register';
 
 export async function register(request: FastifyRequest, reply: FastifyReply) {
     // extrai os dados validados do body da request

@@ -1,7 +1,6 @@
 /* 
 CASOS DE USO (REGRAS DE NEGÓCIO) DE DELEÇÃO VINDOS DO REPOSITORY 
 */
-
 import type { UsersRepository } from '@/repositories/UsersRepository';
 
 export class DeleteUseCase {

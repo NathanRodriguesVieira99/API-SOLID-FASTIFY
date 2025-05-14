@@ -1,9 +1,9 @@
 /* 
 REPOSITÓRIO QUE ARMAZENA OS MÉTODOS DE USER E CRIA CONTATO COM O BANCO DE DADOS VIA PRISMA ORM (SEMPRE ANTES CRIAR INTERFACES)
 */
-
 import { prisma } from '@/lib/prisma';
-import type { Prisma, User } from '@prisma/client';
+import { Prisma, User } from '@prisma/client';
+
 import { IUsersRepository } from '@/interfaces/users-repository';
 
 export class UsersRepository implements IUsersRepository {

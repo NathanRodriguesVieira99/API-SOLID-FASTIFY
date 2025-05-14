@@ -1,7 +1,6 @@
 /*
 ROTAS SÃO CRIADAS (E DOCUMENTAS NO SWAGGER) CHAMANDO OS CONTROLLERS E COLOCANDO O NOME DO ENDPOINT
 */
-
 import type { FastifyTypedInstance } from '@/_types/FastifyTypedInstance';
 
 import { z } from 'zod';

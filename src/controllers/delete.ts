@@ -1,6 +1,8 @@
-import { UsersRepository } from '@/repositories/UsersRepository';
-import { DeleteUseCase } from '@/services/delete';
 import type { FastifyReply, FastifyRequest } from 'fastify';
+
+import { UsersRepository } from '@/repositories/UsersRepository';
+
+import { DeleteUseCase } from '@/services/delete';
 
 export async function deleteUserById(
     request: FastifyRequest,

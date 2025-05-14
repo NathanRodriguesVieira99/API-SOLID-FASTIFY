@@ -1,11 +1,12 @@
 /* 
 CASOS DE USO (REGRAS DE NEGÓCIO) DE CRIAÇÃO VINDOS DO REPOSITORY COM VALIDAÇÕES E USO DOS MÉTODOS 
 */
-
 import type { RegisterUseCaseParams } from '@/interfaces/RegisterUseCaseParams';
 import type { RegisterUseCaseResponse } from '@/interfaces/RegisterUseCaseResponse';
 import type { UsersRepository } from '@/repositories/UsersRepository';
+
 import { UserAlreadyExistsError } from '@/services/errors/user-already-exists-error';
+
 import { hash } from 'bcryptjs';
 
 export class RegisterUseCase {
