@@ -8,6 +8,7 @@ import { registerBodySchema } from '@/validators/registerBodySchema';
 
 import { deleteUserById } from '@/controllers/delete';
 import { register } from '@/controllers/register';
+import { listAllUsers } from '@/controllers/listAll';
 
 export const Routes = async (server: FastifyTypedInstance) => {
     server.post(
@@ -36,5 +37,29 @@ export const Routes = async (server: FastifyTypedInstance) => {
             },
         },
         deleteUserById
+    );
+    server.get(
+        '/users',
+        {
+            schema: {
+                tags: ['users'],
+                description: 'list all users',
+                response: {
+                    200: z.object({
+                        users: z.array(
+                            z.object({
+                                id: z.string().uuid(),
+                                name: z.string(),
+                                email: z.string().email(),
+                                password_hash: z.string(),
+                                created_at: z.date(),
+                                updated_at: z.date(),
+                            })
+                        ),
+                    }),
+                },
+            },
+        },
+        listAllUsers
     );
 };
