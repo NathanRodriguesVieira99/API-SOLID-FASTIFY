@@ -1,1 +1,1 @@
-pnpm test:push --passWithNoTests
+pnpm test:push 
