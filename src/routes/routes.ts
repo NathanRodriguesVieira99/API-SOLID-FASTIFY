@@ -11,6 +11,26 @@ import { register } from '@/controllers/register';
 import { listAllUsers } from '@/controllers/listAll';
 
 export const Routes = async (server: FastifyTypedInstance) => {
+    server.get(
+        '/',
+        {
+            schema: {
+                tags: ['index route'],
+                description: 'index route',
+                response: {
+                    200: z
+                        .object({
+                            status: z.string(),
+                            message: z.string(),
+                        })
+                        .describe('server is running'),
+                },
+            },
+        },
+        async () => {
+            return { status: 'ok', message: 'Server is running' };
+        }
+    );
     server.post(
         '/users',
         {
