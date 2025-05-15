@@ -1,5 +1,7 @@
 import type { listAllUsersCaseResponse } from '@/interfaces/ListAllUsersUseCaseResponse';
 
+import { UsersNoExistsError } from './errors/users-no-exist-error';
+
 import { UsersRepository } from '@/repositories/UsersRepository';
 
 export class ListAllUsersUseCase {
@@ -7,7 +9,9 @@ export class ListAllUsersUseCase {
 
     async execute(): Promise<listAllUsersCaseResponse> {
         const users = await this.usersRepository.listAll();
-
+        if (!users) {
+            throw new UsersNoExistsError();
+        }
         return { users };
     }
 }
