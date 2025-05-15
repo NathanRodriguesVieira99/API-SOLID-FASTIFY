@@ -12,11 +12,11 @@ import { listAllUsers } from '@/controllers/listAll';
 
 export const Routes = async (server: FastifyTypedInstance) => {
     server.get(
-        '/',
+        '/healthy',
         {
             schema: {
-                tags: ['index route'],
-                description: 'index route',
+                tags: ['healthy '],
+                description: ' checking project healthy ',
                 response: {
                     200: z
                         .object({
