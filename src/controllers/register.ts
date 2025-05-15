@@ -4,7 +4,7 @@ CONTROLLER EXTRAI OS DADOS DO BODY DA REQUISIÇÃO, CHAMA OS REPOSITORIES E SERV
 import { UsersRepository } from '@/repositories/UsersRepository';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 
-import { registerBodySchema } from '@/validators/registerBodySchema';
+import { registerBodySchema } from '@/schemas/registerBodySchema';
 
 import { UserAlreadyExistsError } from '@/services/errors/user-already-exists-error';
 
