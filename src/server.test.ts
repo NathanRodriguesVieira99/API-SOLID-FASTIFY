@@ -12,7 +12,9 @@ describe('Server', () => {
         await server.close();
     });
     it('should test if server is running', async () => {
-        const response = await request(server.server).get('/').expect(200);
+        const response = await request(server.server)
+            .get('/healthy')
+            .expect(200);
 
         expect(response.body).toBeDefined();
     });
