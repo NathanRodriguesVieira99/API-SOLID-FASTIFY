@@ -3,7 +3,7 @@ CASOS DE USO (REGRAS DE NEGÓCIO) DE CRIAÇÃO VINDOS DO REPOSITORY COM VALIDAÇ
 */
 import type { RegisterUseCaseParams } from '@/interfaces/RegisterUseCaseParams';
 import type { RegisterUseCaseResponse } from '@/interfaces/RegisterUseCaseResponse';
-import type { UsersRepository } from '@/repositories/UsersRepository';
+import type { UsersRepository } from '@/repositories/prisma/UsersRepository';
 
 import { UserAlreadyExistsError } from '@/services/errors/user-already-exists-error';
 

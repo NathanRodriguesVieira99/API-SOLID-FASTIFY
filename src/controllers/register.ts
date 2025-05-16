@@ -1,7 +1,7 @@
 /*
 CONTROLLER EXTRAI OS DADOS DO BODY DA REQUISIÇÃO, CHAMA OS REPOSITORIES E SERVICES E OS PROCESSA PARA HTTP
 */
-import { UsersRepository } from '@/repositories/UsersRepository';
+import { UsersRepository } from '@/repositories/prisma/UsersRepository';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 
 import { registerBodySchema } from '@/schemas/registerBodySchema';

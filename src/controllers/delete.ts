@@ -2,7 +2,7 @@ import type { FastifyReply, FastifyRequest } from 'fastify';
 
 import { paramsSchema } from '@/schemas/paramsSchema';
 
-import { UsersRepository } from '@/repositories/UsersRepository';
+import { UsersRepository } from '@/repositories/prisma/UsersRepository';
 
 import { DeleteUseCase } from '@/services/delete';
 

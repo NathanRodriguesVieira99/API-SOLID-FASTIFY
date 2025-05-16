@@ -2,7 +2,7 @@ import type { listAllUsersCaseResponse } from '@/interfaces/ListAllUsersUseCaseR
 
 import { UsersNoExistsError } from './errors/users-no-exist-error';
 
-import { UsersRepository } from '@/repositories/UsersRepository';
+import { UsersRepository } from '@/repositories/prisma/UsersRepository';
 
 export class ListAllUsersUseCase {
     constructor(private usersRepository: UsersRepository) {}

@@ -2,7 +2,7 @@ import type { FastifyReply, FastifyRequest } from 'fastify';
 
 import { UsersNoExistsError } from '@/services/errors/users-no-exist-error';
 
-import { UsersRepository } from '@/repositories/UsersRepository';
+import { UsersRepository } from '@/repositories/prisma/UsersRepository';
 
 import { ListAllUsersUseCase } from '@/services/listAll';
 
