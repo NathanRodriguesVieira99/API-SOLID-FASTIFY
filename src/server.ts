@@ -9,9 +9,9 @@ import {
 import { fastifySwagger } from '@fastify/swagger';
 import { fastifySwaggerUi } from '@fastify/swagger-ui';
 
-import { env } from '@/env/index';
+import { env } from '@/config/env/index';
 
-import { Routes } from './routes/routes';
+import { Routes } from '@/infrastructure/http/routes/routes';
 
 // criação do servidor HTTP
 export const server = fastify({}).withTypeProvider<ZodTypeProvider>();
@@ -35,8 +35,10 @@ server.register(fastifySwaggerUi, {
 });
 
 // inicialização do servidor HTTP
-server.listen({ host: '0.0.0.0', port: env.PORT }).then(() => {
-    console.log('🚀 HTTP server is running ');
+server.listen({ host: env.HOST, port: env.PORT }).then(() => {
+    console.log(
+        `🚀 HTTP server is running on http://localhost:${process.env.PORT} `
+    );
 });
 
 // setup das rotas

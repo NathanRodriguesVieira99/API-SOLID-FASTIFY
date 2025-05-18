@@ -1,10 +1,10 @@
 import type { FastifyReply, FastifyRequest } from 'fastify';
 
-import { paramsSchema } from '@/schemas/paramsSchema';
+import { paramsSchema } from '@/infrastructure/http/schemas/paramsSchema';
 
-import { UsersRepository } from '@/repositories/prisma/UsersRepository';
+import { UsersRepository } from '@/infrastructure/db/repositories/prisma/UsersRepository';
 
-import { DeleteUseCase } from '@/services/delete';
+import { DeleteUseCase } from '@/core/services/delete';
 
 export async function deleteUserById(
     request: FastifyRequest,

@@ -1,8 +1,8 @@
-import type { listAllUsersCaseResponse } from '@/interfaces/ListAllUsersUseCaseResponse';
+import type { listAllUsersCaseResponse } from '@/core/interfaces/ListAllUsersUseCaseResponse';
 
-import { UsersNoExistsError } from './errors/users-no-exist-error';
+import { UsersNoExistsError } from '../../shared/errors/users-no-exist-error';
 
-import { UsersRepository } from '@/repositories/prisma/UsersRepository';
+import { UsersRepository } from '@/infrastructure/db/repositories/prisma/UsersRepository';
 
 export class ListAllUsersUseCase {
     constructor(private usersRepository: UsersRepository) {}

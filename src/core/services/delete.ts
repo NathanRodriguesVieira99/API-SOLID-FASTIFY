@@ -1,7 +1,7 @@
 /* 
 CASOS DE USO (REGRAS DE NEGÓCIO) DE DELEÇÃO VINDOS DO REPOSITORY 
 */
-import type { UsersRepository } from '@/repositories/prisma/UsersRepository';
+import type { UsersRepository } from '@/infrastructure/db/repositories/prisma/UsersRepository';
 
 export class DeleteUseCase {
     // esse constructor sempre recebe o repository

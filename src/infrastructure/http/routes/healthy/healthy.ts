@@ -1,4 +1,4 @@
-import type { FastifyTypedInstance } from '@/_types/FastifyTypedInstance';
+import type { FastifyTypedInstance } from '@/@types/FastifyTypedInstance';
 
 import { z } from 'zod';
 

@@ -1,10 +1,10 @@
 import type { FastifyReply, FastifyRequest } from 'fastify';
 
-import { UsersNoExistsError } from '@/services/errors/users-no-exist-error';
+import { UsersNoExistsError } from '@/shared/errors/users-no-exist-error';
 
-import { UsersRepository } from '@/repositories/prisma/UsersRepository';
+import { UsersRepository } from '@/infrastructure/db/repositories/prisma/UsersRepository';
 
-import { ListAllUsersUseCase } from '@/services/listAll';
+import { ListAllUsersUseCase } from '@/core/services/listAll';
 
 export async function listAllUsers(
     request: FastifyRequest,

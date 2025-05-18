@@ -2,14 +2,14 @@
 ENDPOINTS  CRUD DE USERS
 */
 
-import type { FastifyTypedInstance } from '@/_types/FastifyTypedInstance';
+import type { FastifyTypedInstance } from '@/@types/FastifyTypedInstance';
 
 import { z } from 'zod';
-import { registerBodySchema } from '@/schemas/registerBodySchema';
+import { registerBodySchema } from '@/infrastructure/http/schemas/registerBodySchema';
 
-import { deleteUserById } from '@/controllers/delete';
-import { register } from '@/controllers/register';
-import { listAllUsers } from '@/controllers/listAll';
+import { deleteUserById } from '@/infrastructure/http/controllers/delete';
+import { register } from '@/infrastructure/http/controllers/register';
+import { listAllUsers } from '@/infrastructure/http/controllers/listAll';
 
 export async function UserRoutes(server: FastifyTypedInstance) {
     server.post(
