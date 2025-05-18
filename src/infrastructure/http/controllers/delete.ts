@@ -2,7 +2,7 @@ import type { FastifyReply, FastifyRequest } from 'fastify';
 
 import { paramsSchema } from '@/infrastructure/http/schemas/paramsSchema';
 
-import { UsersRepository } from '@/infrastructure/db/repositories/prisma/UsersRepository';
+import { PrismaUsersRepository } from '@/infrastructure/db/repositories/prisma/PrismaUsersRepository';
 
 import { DeleteUseCase } from '@/core/services/delete';
 
@@ -12,9 +12,9 @@ export async function deleteUserById(
 ) {
     try {
         // chama o repository
-        const usersRepository = new UsersRepository();
+        const prismaUsersRepository = new PrismaUsersRepository();
         // injeta o repository no DeleteUseCase
-        const deleteUseCase = new DeleteUseCase(usersRepository);
+        const deleteUseCase = new DeleteUseCase(prismaUsersRepository);
 
         // busca o ID para passar de parâmetro ao execute
         const { id } = paramsSchema.parse(request.params);

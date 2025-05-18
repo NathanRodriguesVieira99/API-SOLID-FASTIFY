@@ -4,9 +4,9 @@ REPOSITÓRIO QUE ARMAZENA OS MÉTODOS DE USER E CRIA CONTATO COM O BANCO DE DADO
 import { prisma } from '@/infrastructure/db/lib/prisma';
 import { Prisma, User } from '@prisma/client';
 
-import { IUsersRepository } from '@/core/interfaces/users-repository';
+import { IPrismaUsersRepository } from '@/core/interfaces/users-repository';
 
-export class UsersRepository implements IUsersRepository {
+export class PrismaUsersRepository implements IPrismaUsersRepository {
     // lógica de criar um usuário
     async create(data: Prisma.UserCreateInput): Promise<User> {
         const user = await prisma.user.create({

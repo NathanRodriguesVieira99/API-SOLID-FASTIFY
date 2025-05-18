@@ -2,7 +2,7 @@ import type { FastifyReply, FastifyRequest } from 'fastify';
 
 import { UsersNoExistsError } from '@/shared/errors/users-no-exist-error';
 
-import { UsersRepository } from '@/infrastructure/db/repositories/prisma/UsersRepository';
+import { PrismaUsersRepository } from '@/infrastructure/db/repositories/prisma/PrismaUsersRepository';
 
 import { ListAllUsersUseCase } from '@/core/services/listAll';
 
@@ -12,9 +12,11 @@ export async function listAllUsers(
 ) {
     try {
         // chama o repository
-        const usersRepository = new UsersRepository();
+        const prismaUsersRepository = new PrismaUsersRepository();
         // injeta o repository no DeleteUseCase
-        const listAllUsersUseCase = new ListAllUsersUseCase(usersRepository);
+        const listAllUsersUseCase = new ListAllUsersUseCase(
+            prismaUsersRepository
+        );
 
         // busca os users para listar
         const { users } = await listAllUsersUseCase.execute();

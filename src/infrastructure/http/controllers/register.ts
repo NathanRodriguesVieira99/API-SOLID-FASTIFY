@@ -1,7 +1,7 @@
 /*
 CONTROLLER EXTRAI OS DADOS DO BODY DA REQUISIÇÃO, CHAMA OS REPOSITORIES E SERVICES E OS PROCESSA PARA HTTP
 */
-import { UsersRepository } from '@/infrastructure/db/repositories/prisma/UsersRepository';
+import { PrismaUsersRepository } from '@/infrastructure/db/repositories/prisma/PrismaUsersRepository';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 
 import { registerBodySchema } from '@/infrastructure/http/schemas/registerBodySchema';
@@ -16,9 +16,9 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
 
     try {
         // chama o repository
-        const usersRepository = new UsersRepository();
+        const prismaUsersRepository = new PrismaUsersRepository();
         // injeta o repository no RegisterUseCase
-        const registerUseCase = new RegisterUseCase(usersRepository);
+        const registerUseCase = new RegisterUseCase(prismaUsersRepository);
 
         // chama o service de criação de usuário
         await registerUseCase.execute({
