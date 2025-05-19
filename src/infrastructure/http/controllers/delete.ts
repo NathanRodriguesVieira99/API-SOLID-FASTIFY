@@ -4,7 +4,7 @@ import { paramsSchema } from '@/infrastructure/http/schemas/paramsSchema';
 
 import { PrismaUsersRepository } from '@/infrastructure/db/repositories/prisma/PrismaUsersRepository';
 
-import { DeleteUseCase } from '@/core/services/delete';
+import { DeleteUseCase } from '@/core/useCases/delete';
 
 export async function deleteUserById(
     request: FastifyRequest,

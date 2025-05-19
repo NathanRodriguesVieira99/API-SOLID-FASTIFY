@@ -4,7 +4,7 @@ import { UsersNoExistsError } from '@/shared/errors/users-no-exist-error';
 
 import { PrismaUsersRepository } from '@/infrastructure/db/repositories/prisma/PrismaUsersRepository';
 
-import { ListAllUsersUseCase } from '@/core/services/listAll';
+import { ListAllUsersUseCase } from '@/core/useCases/listAll';
 
 export async function listAllUsers(
     request: FastifyRequest,

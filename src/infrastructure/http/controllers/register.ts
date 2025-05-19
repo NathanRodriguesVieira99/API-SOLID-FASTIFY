@@ -8,7 +8,7 @@ import { registerBodySchema } from '@/infrastructure/http/schemas/registerBodySc
 
 import { UserAlreadyExistsError } from '@/shared/errors/user-already-exists-error';
 
-import { RegisterUseCase } from '@/core/services/register';
+import { RegisterUseCase } from '@/core/useCases/register';
 
 export async function register(request: FastifyRequest, reply: FastifyReply) {
     // extrai os dados validados do body da request
