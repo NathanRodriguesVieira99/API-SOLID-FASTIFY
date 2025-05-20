@@ -1,5 +1,5 @@
 // parâmetros que o user que vai ser criado tem que ter
-export interface RegisterUseCaseParams {
+export interface IRegisterUseCaseParams {
     email: string;
     name: string;
     password: string;

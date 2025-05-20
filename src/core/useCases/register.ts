@@ -1,13 +1,12 @@
 /* 
 CASOS DE USO (REGRAS DE NEGÓCIO) DE CRIAÇÃO VINDOS DO REPOSITORY COM VALIDAÇÕES E USO DOS MÉTODOS 
 */
-import type { RegisterUseCaseParams } from '@/core/interfaces/RegisterUseCaseParams';
-import type { RegisterUseCaseResponse } from '@/core/interfaces/RegisterUseCaseResponse';
-import type { PrismaUsersRepository } from '@/infrastructure/db/repositories/prisma/PrismaUsersRepository';
-
-import { UserAlreadyExistsError } from '@/shared/errors/user-already-exists-error';
-
 import { hash } from 'bcryptjs';
+
+import type { IRegisterUseCaseParams } from '@/core/interfaces/RegisterUseCaseParams';
+import type { IRegisterUseCaseResponse } from '@/core/interfaces/RegisterUseCaseResponse';
+import type { PrismaUsersRepository } from '@/infrastructure/db/repositories/prisma/PrismaUsersRepository';
+import { UserAlreadyExistsError } from '@/shared/errors/user-already-exists-error';
 
 export class RegisterUseCase {
     // esse constructor sempre recebe o repository
@@ -17,7 +16,7 @@ export class RegisterUseCase {
         name,
         email,
         password,
-    }: RegisterUseCaseParams): Promise<RegisterUseCaseResponse> {
+    }: IRegisterUseCaseParams): Promise<IRegisterUseCaseResponse> {
         // faz o hash da senha
         const password_hash = await hash(password, 6);
 
