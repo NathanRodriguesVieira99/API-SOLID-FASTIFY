@@ -1,6 +1,6 @@
-import type { FastifyTypedInstance } from '@/@types/FastifyTypedInstance';
-
 import { z } from 'zod';
+
+import type { FastifyTypedInstance } from '@/@types/FastifyTypedInstance';
 
 export async function HealthyRoute(server: FastifyTypedInstance) {
     server.get(

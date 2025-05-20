@@ -1,16 +1,15 @@
-import { fastify } from 'fastify';
 import { fastifyCors } from '@fastify/cors';
+import { fastifySwagger } from '@fastify/swagger';
+import { fastifySwaggerUi } from '@fastify/swagger-ui';
+import { fastify } from 'fastify';
 import {
     validatorCompiler,
     serializerCompiler,
     type ZodTypeProvider,
     jsonSchemaTransform,
 } from 'fastify-type-provider-zod';
-import { fastifySwagger } from '@fastify/swagger';
-import { fastifySwaggerUi } from '@fastify/swagger-ui';
 
 import { env } from '@/config/env/index';
-
 import { Routes } from '@/infrastructure/http/routes/routes';
 
 // criação do servidor HTTP

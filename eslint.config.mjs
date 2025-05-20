@@ -1,7 +1,7 @@
 import js from '@eslint/js';
 import json from '@eslint/json';
 import { defineConfig } from 'eslint/config';
-import importPlugin from 'eslint-plugin-import'; 
+import importPlugin from 'eslint-plugin-import';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 

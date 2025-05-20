@@ -1,14 +1,12 @@
 /*
 CONTROLLER EXTRAI OS DADOS DO BODY DA REQUISIÇÃO, CHAMA OS SERVICES COM REPOSITORIES E OS PROCESSA PARA HTTP
 */
-import { PrismaUsersRepository } from '@/infrastructure/db/repositories/prisma/PrismaUsersRepository';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 
-import { registerBodySchema } from '@/infrastructure/http/schemas/registerBodySchema';
-
-import { UserAlreadyExistsError } from '@/shared/errors/user-already-exists-error';
-
 import { RegisterUseCase } from '@/core/useCases/register';
+import { PrismaUsersRepository } from '@/infrastructure/db/repositories/prisma/PrismaUsersRepository';
+import { registerBodySchema } from '@/infrastructure/http/schemas/registerBodySchema';
+import { UserAlreadyExistsError } from '@/shared/errors/user-already-exists-error';
 
 export async function register(request: FastifyRequest, reply: FastifyReply) {
     // extrai os dados validados do body da request
