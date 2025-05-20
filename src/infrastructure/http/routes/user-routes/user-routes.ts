@@ -52,7 +52,6 @@ export async function UserRoutes(server: FastifyTypedInstance) {
                                 id: z.string().uuid(),
                                 name: z.string(),
                                 email: z.string().email(),
-                                password_hash: z.string(),
                                 created_at: z.date(),
                                 updated_at: z.date(),
                             })
