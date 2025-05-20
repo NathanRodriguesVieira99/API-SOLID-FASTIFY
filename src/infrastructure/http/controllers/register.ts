@@ -1,5 +1,5 @@
 /*
-CONTROLLER EXTRAI OS DADOS DO BODY DA REQUISIÇÃO, CHAMA OS REPOSITORIES E SERVICES E OS PROCESSA PARA HTTP
+CONTROLLER EXTRAI OS DADOS DO BODY DA REQUISIÇÃO, CHAMA OS SERVICES COM REPOSITORIES E OS PROCESSA PARA HTTP
 */
 import { PrismaUsersRepository } from '@/infrastructure/db/repositories/prisma/PrismaUsersRepository';
 import type { FastifyReply, FastifyRequest } from 'fastify';
