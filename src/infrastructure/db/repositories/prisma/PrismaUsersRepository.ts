@@ -1,8 +1,8 @@
 /* 
-REPOSITÓRIO QUE ARMAZENA OS MÉTODOS DE USER E CRIA CONTATO COM O BANCO DE DADOS VIA PRISMA ORM (SEMPRE ANTES CRIAR INTERFACES)
+REPOSITÓRIO QUE TEM OS MÉTODOS DE USER (USANDO A INTERFACE) E CRIA CONTATO COM O BANCO DE DADOS VIA PRISMA ORM 
 */
 import { prisma } from '@/infrastructure/db/lib/prisma';
-import { Prisma, User } from '@prisma/client';
+import { User, Prisma } from '@prisma/client';
 
 import { IPrismaUsersRepository } from '@/core/interfaces/users-repository';
 
@@ -10,7 +10,11 @@ export class PrismaUsersRepository implements IPrismaUsersRepository {
     // lógica de criar um usuário
     async create(data: Prisma.UserCreateInput): Promise<User> {
         const user = await prisma.user.create({
-            data,
+            data: {
+                ...data,
+                created_at: new Date(),
+                updated_at: new Date(),
+            },
         });
 
         return user;
@@ -36,13 +40,12 @@ export class PrismaUsersRepository implements IPrismaUsersRepository {
         return result ? true : false;
     }
     // lógica de listar os usuários
-    async listAll(): Promise<User[]> {
+    async listAll(): Promise<Omit<User, 'password_hash'>[]> {
         return prisma.user.findMany({
             select: {
                 id: true,
                 name: true,
                 email: true,
-                password_hash: true,
                 created_at: true,
                 updated_at: true,
             },
