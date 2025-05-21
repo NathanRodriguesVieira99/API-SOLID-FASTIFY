@@ -1,8 +1,8 @@
 import { compare } from 'bcryptjs';
 
-import { InMemoryUsersRepository } from '@/infrastructure/db/repositories/in-memory/InMemoryUsersRepository';
+import { InMemoryUsersRepository } from '@/infra/db/repositories/in-memory/InMemoryUsersRepository';
 
-import { RegisterUseCase } from './register';
+import { RegisterUseCase } from '../register';
 
 describe('POST /users ', () => {
     const userMock = {
