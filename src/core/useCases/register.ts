@@ -5,7 +5,7 @@ import { hash } from 'bcryptjs';
 
 import type { IRegisterUseCaseParams } from '@/core/interfaces/RegisterUseCaseParams';
 import type { IRegisterUseCaseResponse } from '@/core/interfaces/RegisterUseCaseResponse';
-import type { PrismaUsersRepository } from '@/infrastructure/db/repositories/prisma/PrismaUsersRepository';
+import type { PrismaUsersRepository } from '@/infra/db/repositories/prisma/PrismaUsersRepository';
 import { UserAlreadyExistsError } from '@/shared/errors/user-already-exists-error';
 
 export class RegisterUseCase {

@@ -4,7 +4,7 @@ REPOSITÓRIO QUE TEM OS MÉTODOS DE USER (USANDO A INTERFACE) E CRIA CONTATO COM
 import { User, Prisma } from '@prisma/client';
 
 import { IPrismaUsersRepository } from '@/core/interfaces/PrismaUsersRepository';
-import { prisma } from '@/infrastructure/db/lib/prisma';
+import { prisma } from '@/infra/db/lib/prisma';
 
 export class PrismaUsersRepository implements IPrismaUsersRepository {
     // lógica de criar um usuário

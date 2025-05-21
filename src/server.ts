@@ -10,7 +10,7 @@ import {
 } from 'fastify-type-provider-zod';
 
 import { env } from '@/config/env/index';
-import { Routes } from '@/infrastructure/http/routes/routes';
+import { Routes } from '@/infra/http/routes/routes';
 
 // criação do servidor HTTP
 export const server = fastify({}).withTypeProvider<ZodTypeProvider>();

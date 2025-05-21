@@ -5,10 +5,10 @@ ENDPOINTS  CRUD DE USERS
 import { z } from 'zod';
 
 import type { FastifyTypedInstance } from '@/@types/FastifyTypedInstance';
-import { deleteUserById } from '@/infrastructure/http/controllers/delete';
-import { listAllUsers } from '@/infrastructure/http/controllers/listAll';
-import { register } from '@/infrastructure/http/controllers/register';
-import { registerBodySchema } from '@/infrastructure/http/schemas/registerBodySchema';
+import { deleteUserById } from '@/infra/http/controllers/delete';
+import { listAllUsers } from '@/infra/http/controllers/listAll';
+import { register } from '@/infra/http/controllers/register';
+import { registerBodySchema } from '@/infra/http/schemas/registerBodySchema';
 
 export async function UserRoutes(server: FastifyTypedInstance) {
     server.post(

@@ -1,5 +1,5 @@
 import type { IlistAllUsersCaseResponse } from '@/core/interfaces/ListAllUsersUseCaseResponse';
-import { PrismaUsersRepository } from '@/infrastructure/db/repositories/prisma/PrismaUsersRepository';
+import { PrismaUsersRepository } from '@/infra/db/repositories/prisma/PrismaUsersRepository';
 
 import { UsersNoExistsError } from '../../shared/errors/users-no-exist-error';
 
