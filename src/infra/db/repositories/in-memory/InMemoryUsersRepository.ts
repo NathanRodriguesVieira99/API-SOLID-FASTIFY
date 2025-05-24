@@ -1,27 +1,16 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* 
-REPOSITÓRIO EM MEMÓRIA QUE TEM OS MÉTODOS DE USER (USANDO A INTERFACE) SEM CONTATO COM ORM NEM BANCO DE DADOS (USA APENAS A TIPAGEM PRONTA DO PRISMA )
+REPOSITÓRIO EM MEMÓRIA QUE TEM OS MÉTODOS DE USER (USANDO A INTERFACE) SEM CONTATO COM ORM NEM BANCO DE DADOS 
 */
 
-import type { Prisma, User } from '@prisma/client';
+import { User } from '@/core/entities/User';
+import type { IUsersRepository } from '@/core/interfaces/IUsersRepository';
 
-import type { IPrismaUsersRepository } from '@/core/interfaces/PrismaUsersRepository';
-
-export class InMemoryUsersRepository implements IPrismaUsersRepository {
+export class InMemoryUsersRepository implements IUsersRepository {
     // array do tipo User para armazenar os valores em memória
     items: User[] = [];
 
     // lógica de criar um usuário
-    async create(data: Prisma.UserCreateInput) {
-        // cria um usuário mockado
-        const user = {
-            id: crypto.randomUUID(),
-            name: data.name,
-            email: data.email,
-            password_hash: data.password_hash,
-            created_at: new Date(),
-            updated_at: new Date(),
-        };
+    async create(user: User): Promise<User> {
         // adiciona no array de User
         this.items.push(user);
 
@@ -57,11 +46,8 @@ export class InMemoryUsersRepository implements IPrismaUsersRepository {
     }
 
     // lógica de listar os usuários
-    async listAll(): Promise<Omit<User, 'password_hash'>[]> {
-        /*
-       separo o password_hash e passo os outros valores com ...rest
-       retorno rest ( array de Users sem o password_hash)
-       */
-        return this.items.map(({ password_hash, ...rest }) => rest);
+    async listAll(): Promise<User[]> {
+        // Retorna os usuários omitindo o campo 'password_hash'
+        return [...this.items];
     }
 }
