@@ -1,3 +1,5 @@
+import { randomInt } from 'crypto';
+
 import { hash, compare } from 'bcryptjs';
 
 // crio a entidade user com seus atributos
@@ -35,7 +37,8 @@ export class User {
         password: string;
     }): Promise<User> {
         // função pra fazer o hash da senha
-        const hashedPassword = await hash(props.password, 6);
+        const randomHash = randomInt(10, 16);
+        const hashedPassword = await hash(props.password, randomHash);
 
         // retorna o novo user com a senha hashed
         return new User({
