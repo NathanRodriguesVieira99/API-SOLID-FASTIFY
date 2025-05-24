@@ -1,33 +1,37 @@
 /* 
 REPOSITÓRIO QUE TEM OS MÉTODOS DE USER (USANDO A INTERFACE) E CRIA CONTATO COM O BANCO DE DADOS VIA PRISMA ORM 
 */
-import { User, Prisma } from '@prisma/client';
+import { Prisma } from '@prisma/client';
 
-import { IPrismaUsersRepository } from '@/core/interfaces/PrismaUsersRepository';
+import { User } from '@/core/entities/User';
+import { IUsersRepository } from '@/core/interfaces/IUsersRepository';
 import { prisma } from '@/infra/db/lib/prisma';
 
-export class PrismaUsersRepository implements IPrismaUsersRepository {
+export class PrismaUsersRepository implements IUsersRepository {
     // lógica de criar um usuário
-    async create(data: Prisma.UserCreateInput): Promise<User> {
-        const user = await prisma.user.create({
+    async create(user: Prisma.UserCreateInput): Promise<User> {
+        const prismaUser = await prisma.user.create({
             data: {
-                ...data,
+                ...user,
                 created_at: new Date(),
                 updated_at: new Date(),
             },
         });
 
-        return user;
+        return User.reconstitute(prismaUser);
     }
     // lógica de buscar um usuário pelo email
     async findByEmail(email: string): Promise<User | null> {
-        const user = await prisma.user.findUnique({
+        const prismaUser = await prisma.user.findUnique({
             where: {
                 email,
             },
         });
+        if (!prismaUser) {
+            return null;
+        }
 
-        return user;
+        return User.reconstitute(prismaUser);
     }
     // lógica de deletar um usuário
     async delete(id: string): Promise<boolean> {
@@ -40,15 +44,18 @@ export class PrismaUsersRepository implements IPrismaUsersRepository {
         return result ? true : false;
     }
     // lógica de listar os usuários
-    async listAll(): Promise<Omit<User, 'password_hash'>[]> {
-        return prisma.user.findMany({
+    async listAll(): Promise<User[]> {
+        const prismaUsers = await prisma.user.findMany({
             select: {
                 id: true,
                 name: true,
                 email: true,
+                password_hash: true,
                 created_at: true,
                 updated_at: true,
             },
         });
+
+        return prismaUsers.map((prismaUser) => User.reconstitute(prismaUser));
     }
 }
