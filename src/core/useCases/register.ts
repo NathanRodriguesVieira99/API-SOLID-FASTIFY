@@ -11,7 +11,14 @@ import { UserAlreadyExistsError } from '@/shared/errors/user-already-exists-erro
 export class RegisterUseCase {
     // esse constructor sempre recebe o repository
     constructor(private prismaUsersRepository: PrismaUsersRepository) {}
-
+    /**
+     * Executa o processo de criar um novo usuário
+     * @param name
+     * @param email
+     * @param password
+     * @returns um objeto user
+     * @throws UserAlreadyExistsError se ja houver um user com o mesmo email cadastrado
+     */
     async execute({
         name,
         email,
